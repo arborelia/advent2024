@@ -3,8 +3,11 @@ using System.Diagnostics;
 
 namespace Day2
 {
+    // A Report is a list of integers (levels).
     public record struct Report(List<int> levels)
     {
+        // We judge a report to be "safe" if all differences between adjacent level are within a particular range.
+        // The optional "Problem Dampener" can turn an unsafe report into a safe one by removing one level from the sequence.
         public bool DifferencesInRange(int min, int max, bool dampenProblems)
         {
             bool allowDamp = dampenProblems;
@@ -13,8 +16,11 @@ namespace Day2
                 int diff = levels[i] - levels[i-1];
                 if (diff < min || diff > max)
                 {
+                    // This difference is out of range.
                     if (allowDamp)
                     {
+                        // Try to resolve the problem with a "damped" versions of this report.
+                        // We try removing the previous element and the current one, then test those without dampening.
                         List<int> dampedListA = levels.Take(i - 1).Concat(levels.Skip(i)).ToList();
                         List<int> dampedListB = levels.Take(i).Concat(levels.Skip(i + 1)).ToList();
                         Report dampedReportA = new Report(dampedListA);
@@ -24,16 +30,10 @@ namespace Day2
                     else return false;
                 }
             }
-            int current = levels[0];
-            foreach (int level in levels.Skip(1))
-            {
-                int diff = level - current;
-                if (diff < min || diff > max) return false;
-                current = level;
-            }
             return true;
         }
 
+        // Construct a Report from a space-separated input line.
         public static Report FromLine(string line)
         {
             var parts = line.Split(' ');
@@ -41,6 +41,7 @@ namespace Day2
             return new Report(nums.ToList());
         }
 
+        // A report is specified to be safe if all its differences are in [-3 .. -1] or all its differences are in [1 .. 3].
         public bool IsSafe(bool dampenProblems)
         {
             return DifferencesInRange(-3, -1, dampenProblems) || DifferencesInRange(1, 3, dampenProblems);
@@ -49,6 +50,7 @@ namespace Day2
 
     public static class RedNosedReports
     {
+        // Count the number of safe reports, either with or without problem dampening.
         public static int CountSafeEnough(List<string> lines, bool dampenProblems)
         {
             int count = 0;
@@ -60,11 +62,13 @@ namespace Day2
             return count;
         }
 
+        // Count the number of already safe reports.
         public static int CountSafe(List<string> lines)
         {
             return CountSafeEnough(lines, false);
         }
 
+        // Count the number of safe reports with problem dampening.
         public static int CountSafeWithDampening(List<string> lines)
         {
             return CountSafeEnough(lines, true);
