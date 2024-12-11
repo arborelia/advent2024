@@ -1,6 +1,6 @@
 ﻿using Day1;
 
-namespace Day1Tests
+namespace AdventTests
 {
     [TestClass]
     public sealed class Day1Tests
@@ -17,8 +17,10 @@ namespace Day1Tests
                 new NumberPair(3, 9),
                 new NumberPair(3, 3)
             };
-            int diff = Day1.SortedDifferences.CalculateSortedDifference(pairs.ToList());
+            int diff = Day1.NumberListOperations.SortedDifference(pairs.ToList());
             Assert.AreEqual(11, diff);
+            int sim = Day1.NumberListOperations.SimilarityScore(pairs.ToList());
+            Assert.AreEqual(31, sim);
         }
     }
 }

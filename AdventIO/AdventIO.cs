@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.Swift;
-
-namespace AdventIO
+﻿namespace AdventUtils
 {
     public static class AdventIO
     {

@@ -1,21 +1,18 @@
 ﻿using System;
-using AdventIO;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using System.Runtime.CompilerServices;
 
 namespace Day1
 {
     public record struct NumberPair(int First, int Second);
 
-    public static class SortedDifferences
+    public static class NumberListOperations
     {
         public static List<NumberPair> FromInput(string filename)
         {
             Regex regex = new Regex(@"(\d+)\s+(\d+)");
             List<NumberPair> result = new List<NumberPair> ();
-            foreach (string line in AdventIO.AdventIO.GetLines(filename))
+            foreach (string line in AdventUtils.AdventIO.GetLines(filename))
             {
                 Match match = regex.Match(line);
                 if (match.Success)
@@ -27,7 +24,7 @@ namespace Day1
             return result;
         }
 
-        public static int CalculateSortedDifference(List<NumberPair> pairs)
+        public static int SortedDifference(List<NumberPair> pairs)
         {
             int sum = 0;
             List<int> firstNumbers = (from pair in pairs
@@ -44,10 +41,22 @@ namespace Day1
             return sum;
         }
 
+        public static int SimilarityScore(List<NumberPair> pairs)
+        {
+            var similarities = from left in pairs
+                               from right in pairs
+                               where left.First == right.Second
+                               select left.First;
+            return similarities.Sum();
+        }
+
         public static void Main()
         {
-            var pairs = Day1.SortedDifferences.FromInput("input1a.txt");
-            Console.WriteLine(CalculateSortedDifference(pairs));
+            var pairs = Day1.NumberListOperations.FromInput("input1a.txt");
+            int diff = SortedDifference(pairs);
+            int sim = SimilarityScore(pairs);
+            Console.WriteLine($"Sorted difference: {diff}");
+            Console.WriteLine($"Similarity score: {sim}");
         }
     }
 
