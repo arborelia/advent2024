@@ -30,7 +30,8 @@ MXMXAXMASX
         }
 
         [TestMethod]
-        public void TestFindXmas() {
+        public void TestFindXmas()
+        {
             LetterGrid grid = new LetterGrid(testGrid.Split("\n").ToList());
             Assert.IsTrue(grid.FindXmas(0, 5, 0, 1));
             Assert.IsTrue(grid.FindXmas(0, 4, 1, 1));
@@ -39,13 +40,15 @@ MXMXAXMASX
         }
 
         [TestMethod]
-        public void TestCountXmas() {
+        public void TestCountXmas()
+        {
             LetterGrid grid = new LetterGrid(testGrid.Split("\n").ToList());
             Assert.AreEqual(18, grid.CountXmas());
         }
 
         [TestMethod]
-        public void TestCountCrossMas() {
+        public void TestCountCrossMas()
+        {
             LetterGrid grid = new LetterGrid(testGrid.Split("\n").ToList());
             Assert.AreEqual(9, grid.CountCrossMas());
         }

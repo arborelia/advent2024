@@ -13,7 +13,7 @@ namespace Day1
         public static List<NumberPair> FromInput(string filename)
         {
             Regex regex = new Regex(@"(\d+)\s+(\d+)");
-            List<NumberPair> result = new List<NumberPair> ();
+            List<NumberPair> result = new List<NumberPair>();
             foreach (string line in AdventUtils.AdventIO.GetLines(filename))
             {
                 Match match = regex.Match(line);
@@ -31,11 +31,11 @@ namespace Day1
         {
             int sum = 0;
             List<int> leftNumbers = (from pair in pairs
-                                       orderby pair.Left
-                                       select pair.Left).ToList();
+                                     orderby pair.Left
+                                     select pair.Left).ToList();
             List<int> rightNumbers = (from pair in pairs
-                                       orderby pair.Right
-                                       select pair.Right).ToList();
+                                      orderby pair.Right
+                                      select pair.Right).ToList();
             for (int i = 0; i < leftNumbers.Count; i++)
             {
                 int diff = leftNumbers[i] - rightNumbers[i];

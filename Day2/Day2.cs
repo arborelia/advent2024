@@ -14,7 +14,7 @@ namespace Day2
             bool allowDamp = dampenProblems;
             for (int i = 1; i < levels.Count; i++)
             {
-                int diff = levels[i] - levels[i-1];
+                int diff = levels[i] - levels[i - 1];
                 if (diff < min || diff > max)
                 {
                     // This difference is out of range.
