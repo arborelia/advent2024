@@ -2,6 +2,7 @@
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
+// solution to: https://adventofcode.com/2024/day/1
 namespace Day1
 {
     public record struct NumberPair(int Left, int Right);

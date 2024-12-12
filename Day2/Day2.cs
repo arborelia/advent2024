@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Diagnostics;
 
+// solution to: https://adventofcode.com/2024/day/2
 namespace Day2
 {
     // A Report is a list of integers (levels).

@@ -19,5 +19,11 @@
             var path = GetAppPath(filename);
             return [.. File.ReadAllLines(path)];
         }
+
+        public static string GetString(string filename)
+        {
+            var path = GetAppPath(filename);
+            return File.ReadAllText(path);
+        }
     }
 }
