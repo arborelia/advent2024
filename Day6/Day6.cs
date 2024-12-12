@@ -3,8 +3,5 @@ namespace Day6
 {
     public class GuardTracker
     {
-        public static void Main()
-        {
-        }
     }
 }
