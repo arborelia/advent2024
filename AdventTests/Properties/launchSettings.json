@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Day1Tests": {
+    "AdventTests": {
       "commandName": "Project"
     }
   }
