@@ -54,13 +54,7 @@ namespace Day2
         // Count the number of safe reports, either with or without problem dampening.
         public static int CountSafeEnough(List<string> lines, bool dampenProblems)
         {
-            int count = 0;
-            foreach (string line in lines)
-            {
-                Report report = Report.FromLine(line);
-                if (report.IsSafe(dampenProblems)) count += 1;
-            }
-            return count;
+            return lines.Count(line => Report.FromLine(line).IsSafe(dampenProblems));
         }
 
         // Count the number of already safe reports.
