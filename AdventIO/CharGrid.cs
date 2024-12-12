@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace AdventUtils
 {
     // A grid of characters, where getting an out-of-bounds character returns null instead
