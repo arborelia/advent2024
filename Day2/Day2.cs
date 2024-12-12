@@ -68,14 +68,5 @@ namespace Day2
         {
             return CountSafeEnough(lines, true);
         }
-
-        public static void Main()
-        {
-            var lines = AdventUtils.AdventIO.GetLines("input2.txt");
-            var numSafe = CountSafe(lines);
-            var numSafeIsh = CountSafeWithDampening(lines);
-            Console.WriteLine($"Number of safe reports: {numSafe}");
-            Console.WriteLine($"With problems dampener: {numSafeIsh}");
-        }
     }
 }

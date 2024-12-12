@@ -63,14 +63,5 @@ namespace Day3
                 }
             }
         }
-
-        public static void Main()
-        {
-            string garble = AdventUtils.AdventIO.GetString("input3.txt");
-            int sumOfMults = SumOfMultiplications(garble);
-            int sumOfOptionalMults = SumOfOptionalMultiplications(garble);
-            Console.WriteLine($"Sum of all multiplications: {sumOfMults}");
-            Console.WriteLine($"Sum of optional multiplications: {sumOfOptionalMults}");
-        }
     }
 }

@@ -10,7 +10,7 @@ namespace Day1
     public static class NumberListOperations
     {
         // Make a list of NumberPairs from whitespace-separated lines of input.
-        public static List<NumberPair> FromInput(string filename)
+        public static List<NumberPair> PairsFromInput(string filename)
         {
             Regex regex = new Regex(@"(\d+)\s+(\d+)");
             List<NumberPair> result = new List<NumberPair>();
@@ -52,15 +52,6 @@ namespace Day1
                                where left.Left == right.Right
                                select left.Left;
             return similarities.Sum();
-        }
-
-        public static void Main()
-        {
-            var pairs = Day1.NumberListOperations.FromInput("input1a.txt");
-            int diff = SortedDifference(pairs);
-            int sim = SimilarityScore(pairs);
-            Console.WriteLine($"Sorted difference: {diff}");
-            Console.WriteLine($"Similarity score: {sim}");
         }
     }
 
