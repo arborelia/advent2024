@@ -27,5 +27,14 @@ namespace AdventUtils
             if (Height() == 0) return 0;
             return Lines[0].Length;
         }
+
+        public CharGrid AlterCharAt(int row, int col, char newChar)
+        {
+            // Make a copy
+            CharGrid newGrid = new([.. Lines]);
+            string rowToAlter = newGrid.Lines[row];
+            newGrid.Lines[row] = rowToAlter[..col] + newChar.ToString() + rowToAlter[(col + 1)..];
+            return newGrid;
+        }
     }
 }
