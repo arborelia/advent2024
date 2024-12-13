@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1", "Day1\Day1.csproj", "{184DE2A0-A223-4330-A459-2230F4696842}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventUtils", "AdventIO\AdventUtils.csproj", "{D94AE0AE-DF74-413D-88D9-AD4E94A3FFD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventUtils", "AdventUtils\AdventUtils.csproj", "{D94AE0AE-DF74-413D-88D9-AD4E94A3FFD3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventTests", "AdventTests\AdventTests.csproj", "{A2033E24-99EA-4C0B-832F-B2F486FD6385}"
 EndProject
