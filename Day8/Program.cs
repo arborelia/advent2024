@@ -1,4 +1,9 @@
 ﻿using Day8;
 
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+var lines = AdventUtils.AdventIO.GetLines("input8.txt");
+var grid = new AdventUtils.CharGrid(lines);
+var locator = new AntinodeLocator(grid);
+int numAntinodes = locator.NumAntinodes();
+int numCollinear = locator.NumCollinear();
+Console.WriteLine($"number of antinodes: {numAntinodes}");
+Console.WriteLine($"number of collinear nodes: {numCollinear}");

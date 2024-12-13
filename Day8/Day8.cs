@@ -5,12 +5,55 @@ namespace Day8
 {
     public readonly record struct Position(int Row, int Col)
     {
+        // Euclidean algorithm for greatest common divisor, adapted for
+        // signed ints by taking the absolute value.
+        private static int GCD(int a, int b)
+        {
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+            return a | b;
+        }
+
         // Find the antinode of this node on the other side of node 'other'.
         public readonly Position FindAntinode(Position other)
         {
             int rowDiff = other.Row - Row;
             int colDiff = other.Col - Col;
             return new Position(other.Row + rowDiff, other.Col + colDiff);
+        }
+        // Find all nodes collinear with this and other, in the direction of
+        // other. (We'll find the rest when the arguments are swapped.)
+        // 'size' is a number at least as large as the grid's dimensions,
+        // which tells us when to stop.
+        public readonly List<Position> FindCollinear(Position other, int size)
+        {
+            int rowDiff = other.Row - Row;
+            int colDiff = other.Col - Col;
+
+            // A collinear point can be between the nodes. These happen when
+            // the GCD of the row and column differences is greater than 1.
+            int gcd = GCD(rowDiff, colDiff);
+            rowDiff /= gcd;
+            colDiff /= gcd;
+
+            List<Position> positions = [];
+            for (int mul = 0; ; mul++)
+            {
+                int row = Row + rowDiff * mul;
+                int col = Col + colDiff * mul;
+                if (row < 0 || col < 0 || row >= size || col >= size)
+                {
+                    return positions;
+                }
+                positions.Add(new(row, col));
+            }
         }
     }
 
@@ -61,5 +104,34 @@ namespace Day8
             }
             return antinodePositions.Count;
         }
+
+        // Find the number of positions for collinear nodes.
+        public int NumCollinear()
+        {
+            HashSet<Position> collinearPositions = [];
+            int size = Math.Max(Grid.Height(), Grid.Width());
+            foreach (List<Position> positions in NodePositions().Values)
+            {
+                foreach (Position pos1 in positions)
+                {
+                    foreach (Position pos2 in positions)
+                    {
+                        if (pos1 != pos2)
+                        {
+                            foreach (Position collinear in pos1.FindCollinear(pos2, size))
+                            {
+                                // check if position is in bounds
+                                if (Grid.CharAt(collinear.Row, collinear.Col) != null)
+                                {
+                                    collinearPositions.Add(collinear);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return collinearPositions.Count;
+        }
+
     }
 }

@@ -28,6 +28,7 @@ namespace AdventTests
         public void TestAntinodes()
         {
             Assert.AreEqual(14, locator.NumAntinodes());
+            Assert.AreEqual(34, locator.NumCollinear());
         }
     }
 }
