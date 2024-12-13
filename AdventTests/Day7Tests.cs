@@ -17,7 +17,7 @@ namespace AdventTests
 192: 17 8 14
 21037: 9 7 18 13
 292: 11 6 16 20
-        ".Trim().Split('\n').ToList();
+        ".Trim().Split(Environment.NewLine).ToList();
 
         [TestMethod]
         public void TestSatisfy()

@@ -35,7 +35,7 @@ namespace AdventTests
 61,13,29
 97,13,75,29,47
         ".Trim();
-        public static readonly PrintQueueOrganizer pq = PrintQueueOrganizer.FromLines(testPQ.Split("\n").ToList());
+        public static readonly PrintQueueOrganizer pq = PrintQueueOrganizer.FromLines(testPQ.Split(Environment.NewLine).ToList());
 
         [TestMethod]
         public void TestDependencies()

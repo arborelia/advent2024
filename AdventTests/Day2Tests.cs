@@ -18,7 +18,7 @@ namespace AdventTests
         [TestMethod]
         public void TestExample()
         {
-            List<string> testLines = testData.Split('\n').ToList();
+            List<string> testLines = testData.Split(Environment.NewLine).ToList();
             int numSafe = Day2.RedNosedReports.CountSafe(testLines);
             Assert.AreEqual(2, numSafe);
 

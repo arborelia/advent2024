@@ -19,7 +19,7 @@ namespace AdventTests
 #.........
 ......#...
         ".Trim();
-        private static readonly CharGrid grid = new(testGrid.Split('\n').ToList());
+        private static readonly CharGrid grid = new(testGrid.Split(Environment.NewLine).ToList());
         public static readonly GuardTracker tracker = new(grid);
 
         [TestMethod]
