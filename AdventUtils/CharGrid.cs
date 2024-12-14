@@ -6,13 +6,26 @@ namespace AdventUtils
     {
         public List<string> Lines { get; init; } = lines;
 
+        // Construct a CharGrid from a newline-delimited string
+        public static CharGrid FromString(string s)
+        {
+            var lines = s.Split(["\n", "\r", "\r\n"], StringSplitOptions.None);
+            return new CharGrid([.. lines]);
+        }
+
         // Get the character at a particular grid location, or null if it's off the grid.
         public char? CharAt(int row, int col)
         {
-            if (row < 0 || row >= Lines.Count) return null;
+            if (!IsInBounds(row, col)) return null;
+            return Lines[row][col];
+        }
+
+        public bool IsInBounds(int row, int col)
+        {
+            if (row < 0 || row >= Lines.Count) return false;
             string line = Lines[row];
-            if (col < 0 || col >= line.Length) return null;
-            return line[col];
+            if (col < 0 || col >= line.Length) return false;
+            return true;
         }
 
         // Get the height of the grid

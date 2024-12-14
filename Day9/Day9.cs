@@ -1,7 +1,10 @@
 using System.Diagnostics;
 
+// solution to: https://adventofcode.com/2024/day/9
 namespace Day9
 {
+    // The span of blocks occupied by a file on disk. Can be changed while
+    // defragmenting.
     public class DiskSpan(int index, int start, int length, bool isFile)
     {
         public int Index { get; set; } = index;
@@ -15,6 +18,8 @@ namespace Day9
                 return Start + Length;
             }
         }
+
+        // The checksum of a file, as specified by the task.
         public long Checksum()
         {
             // trapezoidal formula for sum of consecutive numbers
@@ -116,8 +121,8 @@ namespace Day9
 
         public static long DefragmentedChecksum(string input)
         {
-            // We don't need to account for gaps anymore, only keep track of
-            // where each file is
+            // We don't need to account for gaps as distinct objects anymore,
+            // they'll just implicitly be the spaces between files
             List<DiskSpan> spans = BuildSpans(input).Where(span => span.IsFile).ToList();
             List<DiskSpan> spansInOrder = [.. spans];
             for (int spanIndex = spans.Count - 1; spanIndex >= 0; spanIndex--)
@@ -136,10 +141,12 @@ namespace Day9
                     if (currentSpan.Length <= gapLength && spanEnd < currentSpan.Start)
                     {
                         currentSpan.Start = spanEnd;
+                        // remove this span from the sorted list, by reference
                         if (!spansInOrder.Remove(currentSpan))
                         {
                             throw new Exception("couldn't remove span");
                         }
+                        // add the span where it now belongs in the sorted list
                         spansInOrder.Insert(i + 1, currentSpan);
                         break;
                     }
