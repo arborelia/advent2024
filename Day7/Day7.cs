@@ -46,7 +46,6 @@ namespace Day7
             {
                 long value = Values[pos];
                 string targetsDebug = JsonSerializer.Serialize(targets);
-                Trace.WriteLine($"using {value} to reach {targetsDebug}");
                 SortedSet<long> newTargets = [];
                 foreach (long aTarget in targets)
                 {
@@ -54,7 +53,6 @@ namespace Day7
                     // reach the target.
                     if (aTarget >= value)
                     {
-                        Trace.WriteLine($"add to {aTarget - value}");
                         newTargets.Add(aTarget - value);
                     }
 
@@ -62,7 +60,6 @@ namespace Day7
                     // to reach the target.
                     if (value > 0 && aTarget % value == 0)
                     {
-                        Trace.WriteLine($"mul by {aTarget / value}");
                         newTargets.Add(aTarget / value);
                     }
                     targets = newTargets;

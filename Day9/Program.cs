@@ -1,5 +1,7 @@
 ﻿using Day9;
 
 var data = AdventUtils.AdventIO.GetString("input9.txt").Trim();
-int checksum = 0; // TODO
-Console.WriteLine($"filesystem checksum: {checksum}");
+long checksum = DiskCompactor.CompactChecksum(data);
+long defrag = DiskCompactor.DefragmentedChecksum(data);
+Console.WriteLine($"compacted checksum: {checksum}");
+Console.WriteLine($"defragmented checksum: {defrag}");
