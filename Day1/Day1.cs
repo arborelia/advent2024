@@ -14,7 +14,7 @@ namespace Day1
         {
             Regex regex = new Regex(@"(\d+)\s+(\d+)");
             List<NumberPair> result = new List<NumberPair>();
-            foreach (string line in AdventUtils.AdventIO.GetLines(filename))
+            foreach (string line in AdventUtils.IO.GetLines(filename))
             {
                 Match match = regex.Match(line);
                 if (match.Success)

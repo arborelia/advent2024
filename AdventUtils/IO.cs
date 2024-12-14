@@ -1,6 +1,6 @@
 ﻿namespace AdventUtils
 {
-    public static class AdventIO
+    public static class IO
     {
         public static readonly string AppName = "AdventOfCode";
 

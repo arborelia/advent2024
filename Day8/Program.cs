@@ -1,6 +1,6 @@
 ﻿using Day8;
 
-var lines = AdventUtils.AdventIO.GetLines("input8.txt");
+var lines = AdventUtils.IO.GetLines("input8.txt");
 var grid = new AdventUtils.CharGrid(lines);
 var locator = new AntinodeLocator(grid);
 int numAntinodes = locator.NumAntinodes();

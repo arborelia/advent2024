@@ -18,7 +18,7 @@ namespace Day7
     {
         public static Calculation FromLine(string line)
         {
-            (string targetStr, string valuesStr) = AdventIO.Partition(line, ": ");
+            (string targetStr, string valuesStr) = IO.Partition(line, ": ");
             long target = long.Parse(targetStr);
             List<long> values = new(valuesStr.Split(" ").Select(long.Parse));
             return new Calculation(target, values);
